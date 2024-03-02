@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('agences', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('ville');
+            $table->string('adresse');
+            $table->string('phone');
+            $table->string('email');
+            $table->unsignedBigInteger('chef_agence'); // Corrigez ici
+            $table->foreign('chef_agence')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
