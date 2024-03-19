@@ -13,25 +13,23 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-5">
-                                    <h3 class="text-center">Log in</h3>
+                                    <h3 class="text-center">reset password</h3>
                                 </div>
                             </div>
                         </div>
 
-                        <form action="loginUser" method="post">
+                        <form action="{{route('store.forgot.password')}}" method="post">
                             @csrf
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="ali@gmail.com" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="entrez le mot de pass" required>
+                                    <label for="email" class="form-label">Email</label>
+                                    <input id="email" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md" required>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button type="submit" name="submit" class="btn btn-lg btn-primary">login</button>
+                                        <button type="submit" class="btn btn-lg btn-primary py-2">
+                                            <span class="font-weight-bold">send link</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -42,10 +40,7 @@
                                 <hr class="mt-5 mb-4 border-secondary-subtle">
                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-between align-items-center">
                                     <a href="{{route('register')}}" class="link-secondary ">cree un compte</a>
-                                    <a href="{{route('forget.password')}}" class="link-secondary">password oublier</a>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
