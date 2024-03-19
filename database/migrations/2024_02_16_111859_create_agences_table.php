@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('phone');
             $table->string('email');
-            $table->unsignedBigInteger('chef_agence'); // Corrigez ici
+            $table->unsignedBigInteger('chef_agence');
             $table->foreign('chef_agence')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
