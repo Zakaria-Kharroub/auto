@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\AgenceController;
+use App\Http\Controllers\VoitureController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +32,33 @@ Route::post('/loginUser', [\App\Http\Controllers\AuthController::class,'loginUse
 
 Route::get('/logout', [\App\Http\Controllers\AuthController::class,'logOut'])->name('logout');
 
+Route::get('/registerUser', [\App\Http\Controllers\AuthController::class, 'registerUser'])->name('registeruser');
+Route::get('/registerAgence', [\App\Http\Controllers\AuthController::class, 'registerAgence'])->name('registeragence');
+
+Route::post('/storeAgence', [\App\Http\Controllers\AuthController::class, 'storeAgence'])->name('storeagence');
+
+
+
+
 // password reset routes
 Route::post('/submit-forgot',[PasswordController::class,'store'])->name('store.forgot.password');
 Route::get('/forgot',[PasswordController::class,'show'])->name('forget.password');
 Route::get('/password/reset/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('/password/reset', [PasswordController::class, 'reset'])->name('password.update');
+
+
+
+
+
+
+// agence routes
+Route::get('/agence', [AgenceController::class, 'index'])->name('agence');
+Route::get('/voiture', [VoitureController::class, 'index'])->name('voiture');
+
+
+
+// voiture routes
+Route::post('/addVoiture', [VoitureController::class, 'addVoiture'])->name('addvoiture');   
+
+
+

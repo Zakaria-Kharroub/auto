@@ -25,6 +25,14 @@ class AuthController extends Controller
         return view('auth/register');
     }
 
+    public function registerUser(){
+        return view('auth/registerUser');
+    }
+
+    public function registerAgence(){
+        return view('auth/registerAgence');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -50,33 +58,94 @@ class AuthController extends Controller
         $user = new User();
         $user ->name =$request->input('name');
        $user ->email =$request->input('email');
-       $user->password =$request->input('password');
-       $user->role_id=$request->input('role_id');
+       $user->password = bcrypt($request->input('password')); 
+        $user->role_id=3;
         $user ->save();
         return redirect()->route('login');
 
 
     }
+
+
+
+
+
+
+
+
+    
+    public function storeAgence(Request $request)
+    {
+
+
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'name_agence' => 'required|max:255',
+            'ville'=> 'required|max:255',
+            'address' => 'required|max:255',
+            'phone' => 'required|max:255',
+            
+        ]);
+
+
+
+        $user = new User();
+        $user ->name =$request->input('name');
+        $user ->email =$request->input('email');
+        $user->name_agence =$request->input('name_agence');
+        $user->phone =$request->input('phone');
+        $user->ville =$request->input('ville');
+        $user->address =$request->input('address');
+        $user->password =$request->input('password');
+        $user->role_id=2;
+        $user ->save();
+        return redirect()->route('login');
+    }
+
+
+
+
+
+
+
     public function loginUser(Request $request){
 
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
-            $request->session()->put('id', Auth::user()->id);
-            $request->session()->put('name', Auth::user()->name);
-            $request->session()->put('role_id', Auth::user()->role_id);
 
-           return redirect()->route('home');
+            $user = Auth()->user();
+
+            if($user->role_id==2){
+                return redirect()->route('agence');
+            }else{
+                return redirect()->route('home');
+            }
+
+
+           
         } else {
             return redirect()->route('login');
         }
     }
+
+
+
+
 
     public function logOut(Request $request){
         Auth::logout();
         $request->session()->invalidate();
         return redirect()->route('login');
     }
+
+
+        
+
+
+
+
 
     /**
      * Display the specified resource.

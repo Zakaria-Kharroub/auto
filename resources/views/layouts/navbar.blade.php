@@ -40,7 +40,7 @@
 
                 <div class="dropdown mt-1 ms-2">
                     <a class="btn btn-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{session('name')}}
+                        {{auth()->user()->name}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="#">profile</a></li>

@@ -52,7 +52,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function agence(){
-        return $this->hasOne(Agence::class);
+    public function voitures(){
+        return $this->hasMany(Voiture::class);
     }
+
+    
 }

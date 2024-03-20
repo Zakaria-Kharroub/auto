@@ -13,34 +13,24 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-5">
-                                    <h3 class="text-center">Register</h3>
+                                    <h3 class="text-center">choose register</h3>
                                 </div>
                             </div>
                         </div>
 
-                        <form action="store" method="post">
-                            @csrf
-                            <div class="row gy-3 gy-md-4 overflow-hidden">
-                                <div class="col-12">
-                                    <label id="labelName" for="name" class="form-label">Username <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="entrez username" required oninput="validateName()">
-                                </div>
-                                <div class="col-12">
-                                    <label id="labelEmail" for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="ali@gmail.com" required oninput="validateEmail()">
-                                </div>
-                                <input type="hidden" name="role_id" value="1" >
-
-                                <div class="col-12">
-                                    <label id="labelPassword" for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="entrez le mot de pass" required oninput="validatePassword()">
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-grid">
-                                        <button id="btn-register" type="submit" name="submit" class="btn btn-lg btn-primary" onclick="validateAll()">Register</button>                                    </div>
+                        <div class="row gy-3 gy-md-4 overflow-hidden">
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <a href="{{route('registeruser')}}" class="btn btn-lg btn-primary">Register as user</a>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <a href="{{route('registeragence')}}" class="btn btn-lg btn-primary">Register as agence</a>
+                                </div>
+                            </div>
+
+                        
 
                         <div class="row">
                             <div class="col-12">
@@ -56,71 +46,7 @@
         </div>
     </div>
 
-    <script>
 
-        const labelname = document.getElementById('labelName');
-        const nameInput = document.getElementById('name');
-
-        const labelEmail = document.getElementById('labelEmail');
-        const emailInput = document.getElementById('email');
-        const emailRejex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-        const labelPassword =document.getElementById('labelPassword');
-        const passwordInput = document.getElementById('password');
-
-        const btnRegister = document.getElementById('btn-register');
-
-
-
-
-        function validateName() {
-            const name = nameInput.value.trim();
-            if (name.length < 3) {
-                labelname.classList.add('text-danger');
-                labelname.textContent = 'username doit comporter au moins 3 char';
-            } else {
-                labelname.classList.remove('text-danger');
-                labelname.innerHTML = 'Username <i class="fa-regular fa-circle-check"></i>';
-            }
-        }
-
-        function validateEmail(){
-            const email = emailInput.value.trim();
-            if (!emailRejex.test(email)) {
-                labelEmail.classList.add('text-danger');
-                labelEmail.textContent = 'Email invalide';
-            } else {
-                labelEmail.classList.remove('text-danger');
-                labelEmail.innerHTML = 'Email <i class="fa-regular fa-circle-check"></i>';
-            }
-        }
-
-        function validatePassword(){
-
-            const password =passwordInput.value.trim();
-
-            if(password.length < 5){
-                labelPassword.classList.add('text-danger');
-                labelPassword.textContent='mot de pass doit comporter moins 5 char';
-            }else{
-                labelPassword.classList.remove('text-danger');
-                labelPassword.innerHTML ='Password <i class="fa-regular fa-circle-check"></i>';
-            }
-
-        }
-        
-
-
-
-
-
-
-
-
-
-
-
-    </script>
 
 
 
