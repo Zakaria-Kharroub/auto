@@ -59,6 +59,7 @@ Route::get('/voiture', [VoitureController::class, 'index'])->name('voiture');
 
 // voiture routes
 Route::post('/addVoiture', [VoitureController::class, 'addVoiture'])->name('addvoiture');   
+Route::put('/updateVoiture/{id}', [VoitureController::class, 'updateVoiture'])->name('updatevoiture');
 
 
 
