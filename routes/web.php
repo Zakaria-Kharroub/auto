@@ -53,13 +53,15 @@ Route::post('/password/reset', [PasswordController::class, 'reset'])->name('pass
 
 // agence routes
 Route::get('/agence', [AgenceController::class, 'index'])->name('agence');
-Route::get('/voiture', [VoitureController::class, 'index'])->name('voiture');
 
 
 
 // voiture routes
+Route::get('/voiture', [VoitureController::class, 'index'])->name('voiture');
 Route::post('/addVoiture', [VoitureController::class, 'addVoiture'])->name('addvoiture');   
 Route::put('/updateVoiture/{id}', [VoitureController::class, 'updateVoiture'])->name('updatevoiture');
+Route::delete('/deleteVoiture/{id}', [VoitureController::class, 'deleteVoiture'])->name('deletevoiture');
+
 
 
 

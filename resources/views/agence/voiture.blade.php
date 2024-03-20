@@ -58,14 +58,14 @@
                           <div class="d-flex">
 
                             <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $voiture->id }}">
-                              modifier
+                              <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                               
 
-                            <form action="" method="POST">
+                            <form action="{{ route('deletevoiture', $voiture->id) }}" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger">delete</button>
+                              <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                           </form>
 
                           </div>
@@ -124,14 +124,14 @@
                       
                                   </div>
 
-                                  <button type="submit" class="btn btn-primary">Submit</button>
 
-                              </form>
+                              
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">enregistrer</button>
                           </div>
+                        </form>
                         </div>
                       </div>
                     </div>

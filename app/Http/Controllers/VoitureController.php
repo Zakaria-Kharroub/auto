@@ -15,6 +15,9 @@ class VoitureController extends Controller
 
 
 
+
+
+
     public function addVoiture(Request $request){
 
         $request->validate([
@@ -49,6 +52,10 @@ class VoitureController extends Controller
 
     }
 
+
+
+
+
     public function updateVoiture(Request $request,$id){
         $request->validate([
             'marque' => 'required',
@@ -78,6 +85,13 @@ class VoitureController extends Controller
 
         $voiture->save();  
         return redirect()->back()->with('message','voiture modifiée avec succès');
+    }
+
+
+    public function deleteVoiture($id){
+        $voiture = Voiture::find($id);
+        $voiture->delete();
+        return redirect()->back()->with('message','voiture supprimée avec succès');
     }
 
         
